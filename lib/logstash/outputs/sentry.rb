@@ -93,7 +93,7 @@ class LogStash::Outputs::Sentry < LogStash::Outputs::Base
     packet = {
       :event_id => SecureRandom.uuid.gsub('-', ''),
       :timestamp => event['@timestamp'],
-      :message => "#{msg}"
+      :message => event["#{msg}"] || "#{msg}"
    }
 
     packet[:level] = "#{level_tag}" 

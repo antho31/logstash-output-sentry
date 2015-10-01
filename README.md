@@ -70,7 +70,17 @@ output {
  }
 ```
 
-* You can change the "message" field  (default : "Message from logstash"), indicate the level (default : "error"), and decide if all your Logstash fields will be tagged in Sentry. If you use the protocole HTTPS, please enable "use_ssl" (default : true), but if you use http you MUST disable ssl. 
+* You can change the "message" field  (default : "Message from logstash"), or optionally specify a field to use from your event. In case the message field doesn't exist, it'll be used as the actual message.
+```ruby
+sentry {
+   'key' => "87e60914d35a4394a69acc3b6d15d061"
+   'secret' => "596d005d20274474991a2fb8c33040b8"
+   'project_id' => "1"
+   'msg' => "msg_field"
+}
+```
+
+* You can indicate the level (default : "error"), and decide if all your Logstash fields will be tagged in Sentry. If you use the protocole HTTPS, please enable "use_ssl" (default : true), but if you use http you MUST disable ssl. 
 ```ruby
 sentry {
    'key' => "87e60914d35a4394a69acc3b6d15d061"
